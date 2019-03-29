@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+  <link rel="stylesheet" href="./style.css">
+  <script src="./animate.js"></script>
+</head>
+<body>
+
+  <textarea id="textExample" rows="5" cols="60">
+In the beginning was the Word, and the Word was with God, and the Word was God. He was with God in the beginning.
+Through Him all things were made; without him nothing was made that has been made. 
+In him was life, and that life was the light of men. 
+The light shines in the darkness, but the darkness has not understood it.
+John 1:1-5.
+
+  </textarea>
+
+  <button onclick="animateText(textExample)">Run Text Animation</button>
+
+  <script>
+    function animateText(textArea) {
+      let text = textArea.value;
+      let to = text.length,
+        from = 0;
+
+      animate({
+        duration: 5000,
+        timing: bounce,
+        draw: function(progress) {
+          let result = (to - from) * progress + from;
+          textArea.value = text.substr(0, Math.ceil(result))
+        }
+      });
+    }
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction >= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+  </script>
+
+</body>
+</html>

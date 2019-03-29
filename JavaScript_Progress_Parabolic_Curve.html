@@ -1,0 +1,29 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./StyleCurve.css">
+  <script src="./AnimateCurve.js"></script>
+</head>
+
+<body>
+
+  <div id="path">
+    <div id="brick"></div>
+  </div>
+
+  <script>
+    brick.onclick = function() {
+      animate({
+        duration: 1000,
+        timing: function(timeFraction) {
+          return Math.pow(timeFraction, 2);
+        },
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  </script>
+
+</body>
+</html>

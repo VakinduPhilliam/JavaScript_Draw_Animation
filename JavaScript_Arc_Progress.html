@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="./StyleArc.css">
+  <script src="./AnimateArc.js"></script>
+</head>
+
+<body>
+
+  <div id="path">
+    <div id="brick"></div>
+  </div>
+
+  <script>
+    brick.onclick = function() {
+      animate({
+        duration: 1000,
+        timing: function circ(timeFraction) {
+          return 1 - Math.sin(Math.acos(timeFraction))
+        },
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  </script>
+
+</body>
+</html>
